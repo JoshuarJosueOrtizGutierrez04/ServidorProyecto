@@ -1,0 +1,185 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffe6f2;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Encabezado principal */
+.main-header {
+    background-color: #ffb6c1;
+    color: rgb(0, 0, 0);
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    position: relative; /* Necesario para el posicionamiento absoluto */
+}
+
+/* Botón "Volver al Chat Principal" */
+.back-button {
+    position: absolute; /* Para posicionar en la esquina */
+    left: 35px; /* Espacio desde la izquierda */
+    top: 50%; /* Centrar verticalmente */
+    transform: translateY(-50%); /* Ajustar para centrar */
+    padding: 10px 15px; /* Espaciado para el botón */
+    background-color: #ff80aa; /* Color de fondo del botón */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Esquinas redondeadas */
+    cursor: pointer; /* Cambiar el cursor al pasar */
+    text-decoration: none; /* Sin subrayado en el texto */
+    font-weight: bold; /* Texto en negrita */
+    transition: background-color 0.3s; /* Efecto al pasar el ratón */
+}
+
+.back-button:hover {
+    background-color: #ff6699; /* Color al pasar el ratón */
+}
+
+/* Contenedor principal */
+.main-container {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 20px;
+}
+
+/* Sección de Grupos */
+.groups-section {
+    width: 20%;
+    background-color: #ffccdf;
+    border-radius: 8px;
+    padding: 15px;
+    margin-right: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.groups-section h2 {
+    color: #ff6699;
+}
+
+.groups-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.groups-section li {
+    margin: 10px 0;
+}
+
+.groups-section a {
+    color: #ff80aa;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.groups-section a:hover {
+    text-decoration: underline;
+}
+
+/* Sección de Chat */
+.chat-section {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto; /* Permite el desplazamiento vertical */
+    padding: 10px;
+    border: 1px solid #ff80aa;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    max-height: 250px; /* Ajusta la altura máxima según sea necesario */
+    background-color: #f9f9f9;
+}
+
+/* Formulario de Chat */
+#chat-form {
+    display: flex;
+}
+
+#message-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ff80aa;
+    border-radius: 4px;
+    outline: none;
+}
+
+button {
+    background-color: #ff80aa;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff6699;
+}
+
+.message {
+    padding: 10px;
+    border-bottom: 1px solid #ff80aa;
+    display: flex;
+    justify-content: space-between; /* Esto separa el mensaje y la hora */
+    margin-bottom: 10px;
+}
+
+.message strong {
+    color: #ff80aa;
+}
+
+/* Estilo de la hora */
+.timestamp {
+    font-size: 0.8em;
+    color: #bbb;
+    margin-left: 10px; /* Separar la hora un poco del mensaje */
+}
+
+.profile-icon {
+    position: absolute; /* Para posicionar el ícono en la esquina */
+    top: 30px; /* Ajusta según tu diseño */
+    right: 30px; /* Ajusta según tu diseño */
+    display: inline-block; /* Para que el ícono se comporte como un bloque */
+}
+
+.profile-img {
+    width: 60px; /* Tamaño del ícono */
+    height: 60px; /* Tamaño del ícono */
+    border-radius: 50%; /* Para que el ícono tenga forma de círculo */
+    object-fit: cover; /* Para recortar la imagen y que se ajuste */
+    border: 2px solid #fff; /* Borde opcional */
+}
+/* Mensaje de usuario (a la derecha) */
+.my-message {
+    background-color: #ffccdf;
+    text-align: left; /* El mensaje se mantiene alineado a la izquierda */
+    border-radius: 10px;
+    margin-left: auto;
+    max-width: 40%;
+    padding-right: 10px; /* Asegura que el texto no quede pegado al borde */
+}
+
+/* Mensaje de otros usuarios (a la izquierda) */
+.other-message {
+    background-color: #ffffff;
+    text-align: left; /* El mensaje se mantiene alineado a la izquierda */
+    border-radius: 10px;
+    max-width: 40%;
+}
+.message-content {
+    flex: 1; /* Esto hace que el mensaje ocupe el espacio restante */
+}
