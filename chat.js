@@ -1,3 +1,20 @@
+// Solicitar permiso para notificaciones si aún no se ha solicitado
+if (Notification.permission === "default") {
+    Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+            console.log("Permiso para notificaciones concedido");
+        }
+    });
+}
+
+// Conjunto para almacenar los mensajes ya notificados
+const notifiedMessages = new Set();
+
+// Función para verificar si la pestaña está activa
+function isPageHidden() {
+    return document.visibilityState === "hidden";
+}
+
 document.getElementById('chat-form').addEventListener('submit', function(e) {
     e.preventDefault(); // Evita la recarga de la página
 
@@ -23,6 +40,20 @@ document.getElementById('chat-form').addEventListener('submit', function(e) {
     }
 });
 
+function mostrarNotificacion(mensaje, usuario) {
+    // Solo muestra la notificación si la página está oculta
+    if (Notification.permission === "granted" && isPageHidden()) {
+        const notification = new Notification("Nuevo mensaje de " + usuario, {
+            body: mensaje
+        });
+
+        // Agregar evento de clic para enfocar o abrir la pestaña del chat
+        notification.onclick = () => {
+            window.focus();
+        };
+    }
+}
+
 // Función para actualizar los mensajes del chat
 function updateChatMessages(messages) {
     const chatMessages = document.getElementById('chat-messages');
@@ -33,6 +64,9 @@ function updateChatMessages(messages) {
     messages.forEach(msg => {
         const messageElement = document.createElement('div');
         messageElement.classList.add('message');
+
+        // Identificador único del mensaje
+        const messageId = `${msg.username}-${msg.created_at}`;
 
         // Comprueba si el mensaje es del usuario actual
         if (msg.is_current_user) {
@@ -51,6 +85,12 @@ function updateChatMessages(messages) {
                 </div>
                 <span class="timestamp">${msg.created_at}</span>
             `;
+
+            // Mostrar notificación solo si no se ha notificado antes
+            if (!notifiedMessages.has(messageId)) {
+                mostrarNotificacion(msg.message, msg.username);
+                notifiedMessages.add(messageId); // Agregar a los mensajes notificados
+            }
         }
 
         chatMessages.appendChild(messageElement);
@@ -72,5 +112,3 @@ setInterval(() => {
         })
         .catch(error => console.error('Error al cargar los mensajes:', error));
 }, 1000);
-
-
