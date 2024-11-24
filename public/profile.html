@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+    <header class="main-header">
+        <a href="chat2.html" class="back-button">Volver al Chat</a>
+        <h1>Perfil de <span id="username-title"></span></h1>
+    </header>
+
+    <div class="profile-container">
+        <div class="profile-info">
+            <img src="default.png" alt="Foto de perfil" class="profile-pic" id="profile-pic">
+        </div>
+
+        <div class="additional-info">
+            <h2 id="username"></h2>
+            <p><strong>Pasatiempos:</strong> <span id="hobbies"></span></p>
+            <p><strong>Escuela:</strong> <span id="school"></span></p>
+            <p><strong>Sobre mí:</strong> <span id="about"></span></p>
+            <p><strong>Grupo Actual:</strong> <span id="group-name"></span></p>
+        </div>
+
+        <div class="edit-button-container">
+            <a href="update_profile.html" class="edit-profile-btn">Editar Perfil</a>
+            <a href="logout.html" class="logout-btn">Cerrar Sesión</a>
+        </div>
+    </div>
+
+    <script src="js/profile.js"></script>
+</body>
+</html>

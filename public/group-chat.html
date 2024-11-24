@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat del Grupo</title>
+    <link rel="stylesheet" href="css/chat.css">
+</head>
+<body>
+<header class="main-header">
+    <a href="chat2.html" class="back-button">Volver al Chat Principal</a>
+    <h1>Chat del Grupo</h1>
+</header>
+
+<div class="main-container">
+    <section class="chat-section">
+        <div class="chat-messages" id="chat-messages"></div>
+        <form id="chat-form">
+            <input type="text" id="message-input" placeholder="Escribe tu mensaje..." required>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+
+    // Únete al grupo al cargar la página
+    const groupId = new URLSearchParams(window.location.search).get('group');
+    socket.emit('joinRoom', { group: groupId });
+
+    // Enviar un mensaje
+    document.getElementById('chat-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const message = document.getElementById('message-input').value;
+        socket.emit('chatMessage', { message, group: groupId });
+        document.getElementById('message-input').value = ''; // Limpiar campo
+    });
+
+    // Recibir mensajes
+    socket.on('message', (msg) => {
+        const chatMessages = document.getElementById('chat-messages');
+        const newMessage = document.createElement('div');
+        newMessage.textContent = msg;
+        chatMessages.appendChild(newMessage);
+    });
+</script>
+</body>
+</html>

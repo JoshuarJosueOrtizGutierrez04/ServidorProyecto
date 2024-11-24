@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat en Tiempo Real</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Pantalla de inicio -->
+    <div id="start-screen">
+        <h2>Bienvenido al Chat</h2>
+        <form id="start-form">
+            <input id="username" type="text" placeholder="Escribe tu nombre" required>
+            <select id="room">
+                <option value="Public">Sala Pública</option>
+                <option value="Private">Sala Privada</option>
+            </select>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+
+    <!-- Pantalla de chat -->
+    <div id="chat-screen" style="display: none;">
+        <div id="chat">
+            <div id="messages"></div>
+            <form id="chat-form">
+                <input id="message-input" type="text" placeholder="Escribe un mensaje..." autocomplete="off" required />
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/chat.js"></script>
+</body>
+</html>

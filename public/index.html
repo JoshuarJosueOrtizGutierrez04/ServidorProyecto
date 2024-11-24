@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script>
+        async function login(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                localStorage.setItem('token', data.token);
+                window.location.href = 'chat.html';
+            } else {
+                document.getElementById('error').textContent = 'Credenciales incorrectas';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Bienvenido al Chat</h1>
+        <p>Para unirte a la conversación, por favor inicia sesión o regístrate.</p>
+        <p id="error" class="error"></p>
+        
+        <form onsubmit="login(event)">
+            <input type="text" id="username" name="username" placeholder="Nombre de usuario" required>
+            <input type="password" id="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        
+        <p>¿No tienes una cuenta? <a href="register.html" class="register-button">Regístrate aquí</a></p>
+    </div>
+</body>
+</html>

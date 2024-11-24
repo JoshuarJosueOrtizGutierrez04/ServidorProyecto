@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat en Vivo</title>
+    <link rel="stylesheet" href="css/chat.css">
+</head>
+<body>
+<header class="main-header">
+    <h1>Bienvenido al Chat en Vivo, <span id="username"></span>!</h1>
+    <a href="profile.html" class="profile-icon">
+        <img src="" alt="Imagen de perfil" class="profile-img" id="profile-pic">
+    </a>
+</header>
+
+<div class="main-container">
+    <aside class="groups-section">
+        <h2>Grupos</h2>
+        <ul id="groups-list"></ul>
+    </aside>
+    <section class="chat-section">
+        <div class="chat-messages" id="chat-messages"></div>
+        <form id="chat-form">
+            <input type="text" id="message-input" placeholder="Escribe tu mensaje..." required>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+</div>
+
+<script src="chat.js"></script>
+</body>
+</html>
